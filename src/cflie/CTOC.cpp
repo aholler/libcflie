@@ -407,16 +407,24 @@ void CTOC::processParameterPacket(CCRTPPacket& packet)
     std::memcpy(i->raw.raw, cData+2, packet.payloadLength() - 2);
   else
     throw std::runtime_error("Broken parameter packet");
+/*
+  if (packet.channel() == CCRTPPacket::ChannelRead) {
+    // Happens after requestParameterValue()
+    std::cout << "Parameter channel read ID " << int(id) << ' ' << i->strGroup << '.' << i->strIdentifier << std::endl;
+  }
+  else if (packet.channel() == CCRTPPacket::ChannelWrite) {
+    // Happens after setParameterValue()
+    std::cout << "Parameter channel write ID " << int(id) << ' ' << i->strGroup << '.' << i->strIdentifier << std::endl;
+  }
+*/
 }
 
 void CTOC::processLogPacket(CCRTPPacket& packet)
 {
   if (packet.port() != CCRTPPacket::PortLogging)
     return;
-  if (packet.channel() == CCRTPPacket::ChannelTOC) {
-    std::cout << "foo" << std::endl;
+  if (packet.channel() == CCRTPPacket::ChannelTOC)
     return;
-  }
   const char *cData = packet.payload();
   bool bFound;
   int nBlockID = cData[1];
