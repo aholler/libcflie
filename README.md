@@ -1,3 +1,8 @@
+I (Alexander Holler) am not the author of this README, so the "I" below
+refers to someone else. I've just added some changes to the source and
+left this README as it was before, besides adding this note.
+---
+
 Crazyflie Nano C++ Client Library [![Build Status](https://travis-ci.org/fairlight1337/libcflie.svg?branch=master)](https://travis-ci.org/fairlight1337/libcflie)
 =================================
 
